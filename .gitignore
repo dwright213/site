@@ -1,0 +1,17 @@
+# Base ignores:
+# Silly OS X trash files.
+.DS_Store
+**/venv/*
+
+# vim backup files.
+.*.swp
+
+# other editor backup files.
+*~
+
+# Compiled python modules.
+*.pyc
+
+# Egg metadata, regenerated from source files by setuptools.
+/*.egg-info
+*/*.egg-info

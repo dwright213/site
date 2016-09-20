@@ -1,0 +1,25 @@
+{% include 'header.html' %}
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<nav class="navbar navbar-light bg-faded" style="background-color: #ebf8ff;">
+					<div class="nav navbar-nav">
+						<a class="nav-item nav-link active" href="#">home <span class="sr-only">(current)</span></a>
+						<a class="nav-item nav-link" href="/infos">infos</a>
+						<a class="nav-item nav-link" href="/fotos">fotos</a>
+						<a class="nav-item nav-link" href="/etc">etc</a>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<p>
+					{% block content %}{% endblock %}
+				</p>
+			</div>
+		</div>
+		{% include 'footer.html' %}
+	</div>
+</body>

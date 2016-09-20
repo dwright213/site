@@ -1,5 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, g
 app = Flask(__name__)
+
+@app.before_request
+def set_up_nav():
+	g.nav = ['home', 'infos', 'fotos', 'etc']
 
 @app.route('/')
 def home():

@@ -24,3 +24,5 @@ def etc():
 
 if __name__ == "__main__":
 	app.run()
+
+# ansible-playbook ansible/main.yml -t migrate -vvvv

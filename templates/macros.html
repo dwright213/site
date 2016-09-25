@@ -1,0 +1,10 @@
+{% macro nav_link(section) %}
+	{% if section == request.endpoint %}
+		<a class="nav-item nav-link active" href="{{ url_for(section) }}">
+		<span class="sr-only">(current)</span>
+	{% else %}
+		<a class="nav-item nav-link" href="{{ url_for(section) }}">
+	{% endif %}
+		{{ section }}
+	</a>
+{% endmacro %}

@@ -1,7 +1,8 @@
+{% from "macros.html" import nav_link with context %}
 <nav class="navbar navbar-light bg-faded" style="background-color: #ebf8ff;">
 	<div class="nav navbar-nav">
 		{% for section in g.nav %}
-			<a class="nav-item nav-link" href="{{ url_for(section) }}">{{ section }}</a>
+			{{ nav_link(section) }}
 		{% endfor %}
 	</div>
 </nav>

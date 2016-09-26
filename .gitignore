@@ -19,3 +19,6 @@
 # Log files, etc
 *.log
 *.sock
+
+# node modules
+node_modules/*

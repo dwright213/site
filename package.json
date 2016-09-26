@@ -1,0 +1,28 @@
+{
+  "name": "site",
+  "version": "1.0.0",
+  "description": "dan's personal site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dwright213/site.git"
+  },
+  "author": "dan wright",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/dwright213/site/issues"
+  },
+  "homepage": "https://github.com/dwright213/site#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-postcss": "^6.2.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-webpack": "^1.5.0",
+    "postcss-flexbugs-fixes": "^2.0.0"
+  }
+}

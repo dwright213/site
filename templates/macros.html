@@ -8,3 +8,10 @@
 		{{ section }}
 	</a>
 {% endmacro %}
+
+<!-- generate our lcd character grids -->
+{% macro lcd_char() %}
+    {% for number in  range(0, 35, 1) %}
+        <div></div>
+    {% endfor %}
+{% endmacro %}

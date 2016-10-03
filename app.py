@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, g
+from flask import Flask, render_template, request, g, abort
 app = Flask(__name__)
 
 @app.before_request
@@ -7,6 +7,8 @@ def set_up_nav():
 
 @app.route('/')
 def home():
+	# print(request.url)
+	# abort(403)
 	return render_template('index.html')
 
 @app.route('/infos')

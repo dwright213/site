@@ -5070,7 +5070,6 @@ a.text-danger:focus, a.text-danger:hover {
 div.lcd-panel {
   display: -ms-flexbox;
   display: flex;
-  width: 396px;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap; }
 
@@ -5082,11 +5081,14 @@ div[class*="character-"] {
   flex-wrap: wrap;
   margin: 10px 9px 10px 9px; }
   div[class*="character-"] div {
-    background: rgba(0, 0, 0, 0.05);
+    background: black;
+    opacity: .05;
     height: 20px;
     width: 20px;
-    margin: .5px; }
+    margin: .5px;
+    transition: opacity 300ms ease-in-out; }
 
 .pixel-on {
-  background: rgba(0, 0, 0, 0.8) !important;
-  box-shadow: -4px 5px 10px rgba(0, 0, 0, 0.3); }
+  opacity: .8 !important;
+  box-shadow: -4px 5px 10px rgba(0, 0, 0, 0.3);
+  transition: opacity 300ms ease-in-out; }

@@ -10,8 +10,8 @@
 {% endmacro %}
 
 <!-- generate our lcd character grids -->
-{% macro lcd_char() %}
+{% macro lcd_char(digit) %}
     {% for number in  range(0, 35, 1) %}
-        <div></div>
+        <div class="digit-pixel-{{ digit }}-{{ number }}"></div>
     {% endfor %}
 {% endmacro %}

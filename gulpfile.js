@@ -44,21 +44,21 @@ gulp.task('default', function () {
 // tasks
 gulp.task('styles', function() {
 	return gulp.src(sassets)
-	.pipe(sass())
-	// .pipe(purify(['./static/js/vendor/*.js','./static/js/*.js', './templates/*.html']))
+	.pipe(sass().on('error', sass.logError))
+	.pipe(purify(['./static/js/vendor/*.js','./static/js/*.js', './templates/*.html']))
 	.pipe(postcss([require('postcss-flexbugs-fixes')]))
   	.pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false
 	}))
 	.pipe(concatenate('styles.css'))
-	// .pipe(minify())
+	.pipe(minify())
   	.pipe(gulp.dest('static/css'))
 });
 
 gulp.task('javascripts', function() {
 	return gulp.src(jsassets)
-	// .pipe(uglify())
+	.pipe(uglify())
 	.pipe(concatenate('scripts.js'))
   	.pipe(gulp.dest('static/js/compiled'))
 })

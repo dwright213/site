@@ -23,6 +23,5 @@ def fotos():
 def etc():
 	return render_template('etc.html')
 
-
 if __name__ == "__main__":
 	app.run()

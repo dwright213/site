@@ -5087,6 +5087,9 @@ body {
   -ms-flex-align: center;
   align-items: center; }
 
+#header {
+  width: 100%; }
+
 #main {
   -ms-flex: 1 1 0%;
   flex: 1 1 0%;
@@ -5097,11 +5100,14 @@ body {
 
 #navigation {
   width: 100%;
-  background-color: rgba(0, 255, 55, 0.4); }
+  background-color: rgba(0, 255, 55, 0); }
 
 div.lcd-panel {
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  width: 100%;
+  -ms-flex-pack: left;
+  justify-content: left; }
 
 div[class*="character-"] {
   display: -ms-flexbox;

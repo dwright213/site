@@ -1,17 +1,21 @@
-{% macro nav_link(section) %}
-	{% if section == request.endpoint %}
-		<a class="nav-item nav-link active" href="{{ url_for(section) }}">
-		<span class="sr-only">(current)</span>
-	{% else %}
-		<a class="nav-item nav-link" href="{{ url_for(section) }}">
-	{% endif %}
-		{{ section }}
-	</a>
-{% endmacro %}
-
 <!-- generate our lcd character grids -->
 {% macro lcd_char(digit) %}
     {% for number in  range(0, 35, 1) %}
         <div class="digit-pixel-{{ digit }}-{{ number }}"></div>
     {% endfor %}
+{% endmacro %}
+
+
+{% macro nav_link(section) %}
+	{% if section == request.endpoint %}
+		<li class="nav-item active">
+			<a class="nav-link" href="{{ url_for(section) }}">
+			<span class="sr-only">(current)</span>
+	{% else %}
+		<li class="nav-item">
+			<a class="nav-link" href="{{ url_for(section) }}">
+	{% endif %}
+		{{ section }}
+		</a>
+	</li>
 {% endmacro %}

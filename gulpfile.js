@@ -37,7 +37,7 @@ watchDirs = [
 gulp.task('default', function () {
     watch(watchDirs, batch(function (events, done) {
         gulp.start('styles', done);
-        gulp.start('javascripts', done);
+        gulp.start('scripts', done);
     }));
 });
 

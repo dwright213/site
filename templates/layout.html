@@ -1,21 +1,28 @@
 {% include 'header.html' %}
-<body style="background-image: url('static/img/background.png');">
-	<div class="container">
-		<div class="row">
-			{% include 'jumbo.html' %}
-		</div>
-		<div class="row">
-			<div class="col-sm-12">
-				{% include 'nav.html' %}
+<body>
+
+	<div id="main-container" class='container'>
+		<!--header-->
+			<div id="header">
+				<h4>
+					{% include 'jumbo.html' %}
+				</h4>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12">
-				<p>
-					{% block content %}{% endblock %}
-				</p>
+
+			<!--navigation, within header-->
+			{% include 'nav.html' %}
+
+			<!-- content -->
+			<div id="main">
+					<p>
+						{% block content %}{% endblock %}
+					</p>
 			</div>
-		</div>
-			{% include 'footer.html' %}
+
+			<!--footer-->
+			<div id="footer">
+				{% include 'footer.html' %}
+			</div>
 	</div>
+
 </body>

@@ -52,18 +52,18 @@ gulp.task('styles', function() {
       cascade: false
 	}))
 	.pipe(concatenate('styles.css'))
-  .pipe(sourcemaps.init())
-	.pipe(minify())
-  .pipe(sourcemaps.write('maps'))
+ //  .pipe(sourcemaps.init())
+	// .pipe(minify())
+ //  .pipe(sourcemaps.write('maps'))
   .pipe(gulp.dest('static/css'))
 });
 
 gulp.task('javascripts', function() {
 	return gulp.src(jsassets)
 	.pipe(concatenate('scripts.js'))
-  .pipe(sourcemaps.init())
-	.pipe(uglify())
-  .pipe(sourcemaps.write('maps'))
+ //  .pipe(sourcemaps.init())
+	// .pipe(uglify())
+ //  .pipe(sourcemaps.write('maps'))
   .pipe(gulp.dest('static/js/compiled'))
 })
 

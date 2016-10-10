@@ -1,5 +1,5 @@
 {% from "macros.html" import nav_link with context %}
-<nav class="navbar navbar-light bg-faded" style="background-color: #ebf8ff;">
+<nav class="navbar navbar-light bg-faded" id="navigation">
 	<div class="nav navbar-nav">
 		{% for section in g.nav %}
 			{{ nav_link(section) }}

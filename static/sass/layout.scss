@@ -27,3 +27,10 @@ body {
   width: 100%;
 	background-color: hsla(133, 100%, 50%, 0.0);
 	}
+
+@media screen and (max-width: 543px){
+  #navigation {
+    order: -1;
+    padding-left: 0;
+  }
+}

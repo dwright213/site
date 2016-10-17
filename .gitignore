@@ -22,3 +22,6 @@
 
 # node modules
 node_modules/*
+
+# env vars
+settings.cfg

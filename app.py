@@ -8,6 +8,13 @@ app.config.from_pyfile('settings.cfg')
 def set_up_nav():
 	g.nav = ['home', 'infos', 'fotos', 'etc']
 
+def tumblr_keys():
+	g.client = pytumblr.TumblrRestClient(
+	app.config['CONSUMER_KEY'],
+	app.config['CONSUMER_SECRET'],
+	app.config['OAUTH_TOKEN'],
+	app.config['OAUTH_SECRET'])
+
 @app.route('/')
 def home():
 	# print(request.url)
@@ -26,25 +33,18 @@ def fotos():
 def etc():
 	return render_template('etc.html')
 
-@app.route('/tumblr_info')
-def get_tumblr_info():
-    client = pytumblr.TumblrRestClient(
-        app.config['CONSUMER_KEY'],
-        app.config['CONSUMER_SECRET'],
-        app.config['OAUTH_TOKEN'],
-        app.config['OAUTH_SECRET']
-    )
-    return jsonify(client.info())
+@app.route('/tumblr')
+def tumblr():
+	tumblr_keys()
+	posts = g.client.posts('classicsretold', limit='10', type='photo')['posts']
+	photos = []
+	for i, post in enumerate(posts):
+		photos.append(post['photos'][0]['alt_sizes'][5])
+		photos[i]['quote'] = post['caption']
 
-@app.route('/tumblr_photos')
-def get_tumblr_photos():
-    client = pytumblr.TumblrRestClient(
-        app.config['CONSUMER_KEY'],
-        app.config['CONSUMER_SECRET'],
-        app.config['OAUTH_TOKEN'],
-        app.config['OAUTH_SECRET']
-    )
-    return jsonify(client.posts('classicsretold.tumblr.com', type='photo', limit=1000, filter='text'))
+	# return jsonify(posts)
+	return jsonify(photos)
+
 
 if __name__ == "__main__":
 	app.run()

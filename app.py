@@ -27,23 +27,34 @@ def infos():
 
 @app.route('/fotos')
 def fotos():
-	return render_template('fotos.html')
+	tumblr_keys()
+	# photos = []
+	photos = g.client.posts(app.config['PHOTO_BLOG'], limit='10', type='photo', filter='text')['posts']
+	# for i, post in enumerate(posts):
+	# 	photos.append(post['photos'][0]['alt_sizes'][3])
+	# 	photos[i]['quote'] = post['caption']
+	return render_template('fotos.html', photos=photos)
 
 @app.route('/etc')
 def etc():
 	return render_template('etc.html')
 
+
+# PRO TIP: ITS ONLY LIKE 27K SO i THINK IM JUST GONNA PASS THE WHOLE OBJECT TO THE TEMPLATE
+# DISTILLING IT DOWN IS FOLLY. IT JUST MEANS IF YOU MAKE A CHANGE IN THE TEMPLATE
+# YOU GOTTA TINKER AROUND WITH YOUR ROUTE. DONT DO THAT.
 @app.route('/tumblr')
 def tumblr():
 	tumblr_keys()
-	posts = g.client.posts('classicsretold', limit='10', type='photo')['posts']
+	posts = g.client.posts(app.config['PHOTO_BLOG'], limit='10', type='photo')['posts']
 	photos = []
 	for i, post in enumerate(posts):
-		photos.append(post['photos'][0]['alt_sizes'][5])
-		photos[i]['quote'] = post['caption']
+		photo = post['photos']
+		photos.append(photo)
+		# photos[i]['quote'] = post['caption']
 
-	# return jsonify(posts)
-	return jsonify(photos)
+
+	return jsonify(posts)
 
 
 if __name__ == "__main__":

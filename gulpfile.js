@@ -45,24 +45,24 @@ gulp.task('default', function() {
 gulp.task('styles', function() {
 	return gulp.src(sassets)
 		.pipe(sass().on('error', sass.logError))
-		.pipe(purify(['./static/js/vendor/*.js', './static/js/*.js', './templates/*.html']))
+		// .pipe(purify(['./static/js/vendor/*.js', './static/js/*.js', './templates/*.html']))
 		.pipe(postcss([require('postcss-flexbugs-fixes')]))
 		.pipe(autoprefixer({
 			browsers: ['last 2 versions'],
 			cascade: false
 		}))
 		.pipe(concatenate('styles.css'))
-		.pipe(sourcemaps.init())
-		.pipe(minify())
-		.pipe(sourcemaps.write('maps'))
+		// .pipe(sourcemaps.init())
+		// .pipe(minify())
+		// .pipe(sourcemaps.write('maps'))
 		.pipe(gulp.dest('static/css'))
 });
 
 gulp.task('scripts', function() {
 	return gulp.src(jsassets)
 		.pipe(concatenate('scripts.js'))
-		.pipe(sourcemaps.init())
-		.pipe(uglify())
-		.pipe(sourcemaps.write('maps'))
+		// .pipe(sourcemaps.init())
+		// .pipe(uglify())
+		// .pipe(sourcemaps.write('maps'))
 		.pipe(gulp.dest('static/js/compiled'))
 })

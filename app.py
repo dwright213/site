@@ -39,17 +39,17 @@ def etc():
 # PRO TIP: ITS ONLY LIKE 27K SO i THINK IM JUST GONNA PASS THE WHOLE OBJECT TO THE TEMPLATE
 # DISTILLING IT DOWN IS FOLLY. IT JUST MEANS IF YOU MAKE A CHANGE IN THE TEMPLATE
 # YOU GOTTA TINKER AROUND WITH YOUR ROUTE. DONT DO THAT.
-@app.route('/tumblr')
-def tumblr():
-	tumblr_keys()
-	posts = g.client.posts(app.config['PHOTO_BLOG'], limit='10', type='photo')['posts']
-	photos = []
-	for i, post in enumerate(posts):
-		photo = post['photos']
-		photos.append(photo)
+# @app.route('/tumblr')
+# def tumblr():
+# 	tumblr_keys()
+# 	posts = g.client.posts(app.config['PHOTO_BLOG'], limit='10', type='photo')['posts']
+# 	photos = []
+# 	for i, post in enumerate(posts):
+# 		photo = post['photos']
+# 		photos.append(photo)
 
 
-	return jsonify(posts)
+# 	return jsonify(posts)
 
 
 if __name__ == "__main__":

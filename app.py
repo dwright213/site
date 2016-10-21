@@ -28,11 +28,7 @@ def infos():
 @app.route('/fotos')
 def fotos():
 	tumblr_keys()
-	# photos = []
 	photos = g.client.posts(app.config['PHOTO_BLOG'], limit='10', type='photo', filter='text')['posts']
-	# for i, post in enumerate(posts):
-	# 	photos.append(post['photos'][0]['alt_sizes'][3])
-	# 	photos[i]['quote'] = post['caption']
 	return render_template('fotos.html', photos=photos)
 
 @app.route('/etc')
@@ -51,7 +47,6 @@ def tumblr():
 	for i, post in enumerate(posts):
 		photo = post['photos']
 		photos.append(photo)
-		# photos[i]['quote'] = post['caption']
 
 
 	return jsonify(posts)

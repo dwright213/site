@@ -13,10 +13,11 @@ var
 	autoprefixer = require('gulp-autoprefixer'),
 	flexbugs = require('postcss-flexbugs-fixes'),
 
-	sassets = [
-		'static/sass/vendor/bootstrap/bootstrap.scss',
-		'static/sass/*.scss'
-	];
+sassets = [
+	'static/sass/vendor/bootstrap/bootstrap.scss',
+	'static/sass/vendor/lightbox.css',
+	'static/sass/*.scss'
+];
 
 jsassets = [
 	'static/js/vendor/jquery.min.js',

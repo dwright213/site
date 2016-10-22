@@ -23,6 +23,7 @@ jsassets = [
 	'static/js/vendor/jquery.noisy.min.js',
 	'static/js/vendor/tether.js',
 	'static/js/vendor/bootstrap.js',
+	'static/js/vendor/lightbox.js',
 	'static/js/*.js'
 ];
 
@@ -45,7 +46,7 @@ gulp.task('default', function() {
 gulp.task('styles', function() {
 	return gulp.src(sassets)
 		.pipe(sass().on('error', sass.logError))
-		.pipe(purify(['./static/js/vendor/*.js', './static/js/*.js', './templates/*.html']))
+		// .pipe(purify(['./static/js/vendor/*.js', './static/js/*.js', './templates/*.html']))
 		.pipe(postcss([require('postcss-flexbugs-fixes')]))
 		.pipe(autoprefixer({
 			browsers: ['last 2 versions'],

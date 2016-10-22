@@ -17,6 +17,7 @@
 */*.egg-info
 
 # Log files, etc
+log/*
 *.log
 *.sock
 

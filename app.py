@@ -35,22 +35,9 @@ def fotos():
 def etc():
 	return render_template('etc.html')
 
-
-# PRO TIP: ITS ONLY LIKE 27K SO i THINK IM JUST GONNA PASS THE WHOLE OBJECT TO THE TEMPLATE
-# DISTILLING IT DOWN IS FOLLY. IT JUST MEANS IF YOU MAKE A CHANGE IN THE TEMPLATE
-# YOU GOTTA TINKER AROUND WITH YOUR ROUTE. DONT DO THAT.
-# @app.route('/tumblr')
-# def tumblr():
-# 	tumblr_keys()
-# 	posts = g.client.posts(app.config['PHOTO_BLOG'], limit='10', type='photo')['posts']
-# 	photos = []
-# 	for i, post in enumerate(posts):
-# 		photo = post['photos']
-# 		photos.append(photo)
-
-
-# 	return jsonify(posts)
-
+@app.route('/video/therealgundam')
+def video():
+	return render_template('video.html', video=app.config['GUNDAM_VIDEO'])
 
 if __name__ == "__main__":
 	app.run()

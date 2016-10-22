@@ -4,19 +4,17 @@
 		<h3 class="card-header">bureau of fotos</h3>
 		<div class="card-block">
 			{% for photo in photos %}
-				<a class="" data-toggle="modal" href="#photo-{{ loop.index }}">
-					<img src="{{ photo.photos[0].alt_sizes[3].url }}" class="img-rounded img-same-height">
-				</a>
+				<a class="" data-toggle="modal" href="#photo-{{ loop.index }}"><img src="{{ photo.photos[0].alt_sizes[3].url }}" class="img-thumbnail img-same-height"></a>
+
 				<div class="modal fade" id="photo-{{ loop.index }}">
 					<div class="modal-dialog" id="modal-number-{{ loop.index }}" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
+									<span aria-hidden="true"></span>
 								</button>
-								
 							</div>
-								<img src="{{ photo.photos[0].alt_sizes[0].url }}" class="">
+								<img src="{{ photo.photos[0].alt_sizes[0].url }}" class="img-fluid">
 							<div class="modal-footer">
 								<span class="modal-title">
 									{{ photo.caption }}

@@ -5073,8 +5073,7 @@ body {
   margin: 5px 0 0 0; }
 
 div[id*="modal-number-"] {
-  width: auto;
-  max-width: 1280px; }
+  width: auto; }
 
 .modal-content {
   border: 0; }

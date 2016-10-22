@@ -20,7 +20,6 @@ var
 
 jsassets = [
 	'static/js/vendor/jquery.min.js',
-	'static/js/vendor/jquery.noisy.min.js',
 	'static/js/vendor/tether.js',
 	'static/js/vendor/bootstrap.js',
 	'static/js/vendor/lightbox.js',

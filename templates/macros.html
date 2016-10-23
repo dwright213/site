@@ -19,3 +19,6 @@
 	</li>
 {% endmacro %}
 
+{% macro thumb(photo) %}
+	<a class="" data-toggle="lightbox" href="{{ photo.alt_sizes[0].url }}" data-gallery="single-posts"><img src="{{ photo.alt_sizes[3].url }}" class="img-thumbnail img-same-height"></a>
+{% endmacro %}

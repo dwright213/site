@@ -1,10 +1,26 @@
 {% extends "layout.html" %}
 {% block content %}
+{% from "macros.html" import thumb with context %}
 	<div class="card">
 		<h3 class="card-header">bureau of fotos</h3>
 		<div class="card-block">
-			{% for photo in photos %}
-				<a class="" data-toggle="lightbox" href="{{ photo.photos[0].alt_sizes[0].url }}" data-gallery="single-posts"><img src="{{ photo.photos[0].alt_sizes[3].url }}" class="img-thumbnail img-same-height"></a>
+			{% for post in posts %}
+
+				{% if post.photoset_layout %}
+					<p>
+						<h5>
+							{{ post.caption }}
+						</h5>
+				{% endif %}
+
+				{% for photo in post.photos %}
+					{{ thumb(photo) }}
+				{% endfor %}
+
+				{% if post.photoset_layout %}
+					</p>
+				{% endif %}
+				
 			{% endfor %}
 
 		</div>

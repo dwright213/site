@@ -28,15 +28,15 @@ def infos():
 @app.route('/fotos')
 def fotos():
 	tumblr_keys()
-	posts = g.client.posts(app.config['PHOTO_BLOG'], limit='10', type='photo', filter='text')['posts']
+	posts = g.client.posts(app.config['PHOTO_BLOG'], limit='100', type='photo', filter='text')['posts']
 	return render_template('fotos.html', posts=posts)
 
-@app.route('/fotosobject')
-def fotosobject():
-	tumblr_keys()
-	photos = g.client.posts(app.config['PHOTO_BLOG'], limit='10', type='photo', filter='text')['posts']
-	# return render_template('fotos.html', photos=photos)
-	return jsonify(photos)
+# @app.route('/fotosobject')
+# def fotosobject():
+# 	tumblr_keys()
+# 	photos = g.client.posts(app.config['PHOTO_BLOG'], limit='10', type='photo', filter='text')['posts']
+# 	# return render_template('fotos.html', photos=photos)
+# 	return jsonify(photos)
 
 @app.route('/etc')
 def etc():

@@ -1,8 +1,29 @@
+from datetime import datetime
 from flask import Flask, render_template, request, g, abort, jsonify
 import pytumblr
+from flask_mongokit import MongoKit, Document
+
+
 
 app = Flask(__name__)
 app.config.from_pyfile('settings.cfg')
+
+
+# mongo stuff
+class Blag(Document):
+    __collection__ = 'blags'
+    structure = {
+        'title': unicode,
+        'text': unicode,
+        'creation': datetime,
+    }
+    required_fields = ['title', 'creation']
+    default_values = {'creation': datetime.utcnow}
+    use_dot_notation = True
+db = MongoKit(app)
+db.register([Blag])
+# end mongo stuff
+
 
 @app.before_request
 def set_up_nav():
@@ -20,6 +41,22 @@ def home():
 	# print(request.url)
 	# abort(403)
 	return render_template('index.html')
+
+@app.route('/mongo')
+def mongo():
+	jason = []
+	blags = db.Blag.find()
+	for blag in blags:
+		jason.append({'title': blag.title, 'text': blag.text})
+	return jsonify(jason)
+
+@app.route('/new')
+def new_blag():
+    blag = db.Blag()
+    blag.title = u'this is a test ' + str(datetime.utcnow)
+    blag.text = u'this is only a test'
+    blag.save()
+    return 'okay, blags added'
 
 @app.route('/infos')
 def infos():

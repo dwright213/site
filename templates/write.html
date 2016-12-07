@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+	<div class="card">
+		<h3 class="card-header">bureau of WRITE A WORDS</h3>
+		<div class="card-block">
+
+			<form action="/add" method="POST">
+				<div class="form-group">
+					<label for="title">title</label>
+					<input type="text" name="title" class="form-control" id="title-field" placeholder="title">
+				</div>
+				<div class="form-group">
+					<label for="text">text</label>
+					<textarea name="text" class="form-control" id="text" rows="3"></textarea>
+				</div>
+				<button type="submit" class="btn btn-primary">submit</button>
+			</form>
+
+		</div>
+	</div>
+{% endblock %}

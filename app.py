@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import Flask, render_template, request, g, abort, jsonify
+from flask import Flask, render_template, request, g, abort, jsonify, redirect, url_for
 import pytumblr
 from flask_mongokit import MongoKit, Document
 
@@ -38,25 +38,33 @@ def tumblr_keys():
 
 @app.route('/')
 def home():
-	# print(request.url)
-	# abort(403)
 	return render_template('index.html')
 
-@app.route('/mongo')
-def mongo():
+@app.route('/blags')
+def blags():
 	jason = []
 	blags = db.Blag.find()
 	for blag in blags:
-		jason.append({'title': blag.title, 'text': blag.text})
+		jason.append({'title': blag.title, 'text': blag.text, 'id': str(blag._id)})
 	return jsonify(jason)
 
-@app.route('/new')
-def new_blag():
-    blag = db.Blag()
-    blag.title = u'this is a test ' + str(datetime.utcnow)
-    blag.text = u'this is only a test'
-    blag.save()
-    return 'okay, blags added'
+@app.route('/add', methods=['POST'])
+def add():
+	blag = db.Blag()
+	print(request.form)
+	blag.title = request.form['title']
+	blag.text = request.form['text']
+	blag.save()
+	return redirect(url_for('blags'))
+
+@app.route('/edit/<id>')
+def edit(id):
+	blag = db.Blag.find({'id': id})
+	return render_template('edit.html', blag=blag)
+
+@app.route('/write')
+def write():
+    return render_template('write.html')
 
 @app.route('/infos')
 def infos():
@@ -67,13 +75,6 @@ def fotos():
 	tumblr_keys()
 	posts = g.client.posts(app.config['PHOTO_BLOG'], limit='100', type='photo', filter='text')['posts']
 	return render_template('fotos.html', posts=posts)
-
-# @app.route('/fotosobject')
-# def fotosobject():
-# 	tumblr_keys()
-# 	photos = g.client.posts(app.config['PHOTO_BLOG'], limit='10', type='photo', filter='text')['posts']
-# 	# return render_template('fotos.html', photos=photos)
-# 	return jsonify(photos)
 
 @app.route('/etc')
 def etc():

@@ -84,4 +84,4 @@ def video():
 	return render_template('video.html', video=app.config['GUNDAM_VIDEO'])
 
 if __name__ == "__main__":
-	app.run()
+	app.run(debug=True,host='0.0.0.0')

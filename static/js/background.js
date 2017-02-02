@@ -7,4 +7,3 @@
 // 		'monochrome' : true
 // 	}).css('background-color', '#ffffff');
 // });
-

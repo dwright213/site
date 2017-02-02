@@ -1,7 +1,7 @@
 {
   "name": "site",
   "version": "1.0.0",
-  "description": "dan's personal site",
+  "description": "dan's personal site asset compiler",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,7 +16,7 @@
     "url": "https://github.com/dwright213/site/issues"
   },
   "homepage": "https://github.com/dwright213/site#readme",
-  "devDependencies": {
+  "dependencies": {
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-batch": "^1.0.5",
@@ -29,6 +29,8 @@
     "gulp-uglify": "^2.0.0",
     "gulp-watch": "^4.3.10",
     "gulp-webpack": "^1.5.0",
-    "postcss-flexbugs-fixes": "^2.0.0"
+    "postcss-flexbugs-fixes": "^2.0.0",
+    "gulp-debug": "^3.0.0",
+    "gulp-sequence": "^0.4.6"
   }
 }

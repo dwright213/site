@@ -24,7 +24,6 @@ db = MongoKit(app)
 db.register([Blag])
 # end mongo stuff
 
-
 @app.before_request
 def set_up_nav():
 	g.nav = ['home', 'infos', 'fotos', 'etc']

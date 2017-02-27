@@ -2,18 +2,17 @@ from datetime import datetime
 from flask import Flask, render_template, request, g, abort, jsonify
 import pytumblr, os
 from flask_mongokit import MongoKit, Document, Connection
-
+from flask.ext.login import LoginManager
 
 app = Flask(__name__)
 app.config.from_pyfile('settings.cfg')
 
 connection = Connection(app.config['MONGODB_HOST'], app.config['MONGODB_PORT'])
 
+
 # mongo stuff
 class Blag(Document):
 	__collection__ = 'blags'
-
-
 	structure = {
 		'title': unicode,
 		'text': unicode,
@@ -22,10 +21,16 @@ class Blag(Document):
 	required_fields = ['title', 'creation']
 	default_values = {'creation': datetime.utcnow}
 	use_dot_notation = True
-
 db = MongoKit(app)
 db.register([Blag])
 # end mongo stuff
+
+
+# login stuff
+login_manager = LoginManager()
+login_manager.init_app(app)
+# end login stuff
+
 
 @app.before_request
 def set_up_nav():
